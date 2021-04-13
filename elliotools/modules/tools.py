@@ -262,13 +262,20 @@ def lon360_to_180(lon):
 	Parameters
 	----------
 	
-	lon: float
+	lon: float (or float array)
 		longitude to convert
 	"""
 	
-	remainder = (lon+180) % 360
+	if isinstance(lon, np.ndarray):
+		new_lons = np.zeros(len(lon))
+		for i in range(lon):
+			remainder = (lon[i]+180) % 360
+			new_lons[i] = remainder - 180
+	else:
+		remainder = (lon+180) % 360
+		new_lons = remainder - 180
 	
-	return remainder - 180
+	return new_lons
 
 def lon180_to_360(lon):
 	"""
@@ -282,3 +289,22 @@ def lon180_to_360(lon):
 	"""
 	
 	return lon % 360
+
+def time_to_title(time):
+	
+	"""
+	Converts a string time (YYYY:MM:DD HH:mm:ss) into a format that can be
+	used to save files (YYYYMMDD_HHmmss)
+	"""
+	
+	YY = time[0:4]
+	MM = time[5:7]
+	DD = time[8:10]
+	HH = time[11:13]
+	mm = time[14:16]
+	ss = time[17:19]
+	
+	title = "{}{}{}_{}{}{}".format(YY, MM, DD, HH, mm, ss)
+	
+	return title
+	
