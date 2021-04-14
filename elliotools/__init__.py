@@ -12,3 +12,4 @@ from .modules.tools import vector_change
 from .modules.tools import lon360_to_180
 from .modules.tools import lon180_to_360
 from .modules.tools import time_to_title
+from .modules.tools import reduce_array

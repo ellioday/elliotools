@@ -307,4 +307,15 @@ def time_to_title(time):
 	title = "{}{}{}_{}{}{}".format(YY, MM, DD, HH, mm, ss)
 	
 	return title
+
+def reduce_array(var):
+	
+	"""
+	removes object from array
+	"""
+	
+	while isinstance(var, np.ndarray) or isinstance(var, tuple) or isinstance(var, list):
+		var = var[0]
+		
+	return var
 	
