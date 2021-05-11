@@ -319,3 +319,39 @@ def reduce_array(var):
 		
 	return var
 	
+def latlondistance(lat1, lon1, lat2, lon2, coords="deg"):
+
+	"""
+	Computes Haversine for distance between 2 lat lon coordinates
+	
+	Parameters
+	----------
+	
+	lat1: float
+		latitude of point 1
+	lon1: float
+		longitude of point 1
+	lat2: float
+		latitude of point 2
+	lon2: float
+		longitude of point 2
+	coords: str (default "deg")
+		coordinates that the inputs are given in (either "deg" or "rad")
+	"""
+	
+	if coords == "deg":
+		lat1 = np.deg2rad(lat1)
+		lat2 = np.deg2rad(lat2)
+		lon1 = np.deg2rad(lon1)
+		lon2 = np.deg2rad(lon2)	
+
+	R = 6371
+	dlon = lon2 - lon1
+	dlat = lat2 - lat1
+	
+	a = np.sin(dlat / 2)**2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon / 2)**2
+	c = 2 * math.atan2(np.sqrt(a), np.sqrt(1 - a))
+	
+	d = R * c
+	
+	return d

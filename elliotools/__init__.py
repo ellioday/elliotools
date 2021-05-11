@@ -1,6 +1,8 @@
 from .modules.coordinate_transformations import polar_to_cart
 from .modules.coordinate_transformations import aacgm_to_mlt
 from .modules.coordinate_transformations import geo_to_aacgm
+from .modules.coordinate_transformations import londeg2km
+from .modules.coordinate_transformations import lonkm2deg
 
 from .modules.tools import rms
 from .modules.tools import sin

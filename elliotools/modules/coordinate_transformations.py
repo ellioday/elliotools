@@ -92,3 +92,21 @@ def geo_to_aacgm(lat, lon, time, alt=0):
 	alat, alon, r = aacgmv2.convert_latlon_arr(lat, lon, alt, time, method_code="G2A")
 	
 	return alat, alon
+
+def londeg2km(lat):
+	
+	"""
+	converts 1 degree of longitude to km at given latitude
+	"""
+	
+	return 111*np.cos(np.deg2rad(lat))
+
+def lonkm2deg(lat, km):
+	
+	"""
+	Converts longitude from given km to number of degrees at given latitude
+	"""
+	
+	#find how long one degree is at current latitude
+	dist = londeg2km(lat) #dist is how many km's are in one degree
+	return km/dist
