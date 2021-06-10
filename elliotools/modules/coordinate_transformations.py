@@ -56,7 +56,7 @@ def aacgm_to_mlt(lon, time):
 	
 	mlt_lon = np.array(aacgmv2.convert_mlt(lon, time, m2a=False))
 	
-	return mlt_lon
+	return mlt_lon*15
 
 def geo_to_aacgm(lat, lon, time, alt=0):
 	
